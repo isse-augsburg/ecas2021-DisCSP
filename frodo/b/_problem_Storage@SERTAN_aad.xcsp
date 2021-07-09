@@ -1,0 +1,54 @@
+<instance>
+<presentation name="Storage@SERTAN_aad" maximize="false" format="XCSP 2.1_FRODO" maxConstraintArity="2" />
+
+<agents self="Storage-SERTAN_aad">
+    <agent name="Storage-SERTAN_aad" />
+    <agent name="Cart-SERTAN_2cc" />
+</agents>
+
+<domains nbDomains="1">
+    <domain name="state" nbValues="3">-1..1</domain>
+</domains>
+
+<variables>
+    <variable name="Storage-SERTAN_aad:i#Cart-SERTAN_2cc" domain="state" agent="Storage-SERTAN_aad" />
+    <variable name="Cart-SERTAN_2cc:o#Storage-SERTAN_aad" domain="state" agent="Cart-SERTAN_2cc" />
+    <variable name="Storage-SERTAN_aad:o#Cart-SERTAN_2cc" domain="state" agent="Storage-SERTAN_aad" />
+    <variable name="Cart-SERTAN_2cc:i#Storage-SERTAN_aad" domain="state" agent="Cart-SERTAN_2cc" />
+</variables>
+
+<predicates nbPredicates="2">  
+    <predicate name="equalto">  
+      <parameters> int X1 int X2 </parameters>  
+      <expression>  
+        <functional> eq(X1, X2) </functional>  
+      </expression>  
+    </predicate>  
+    <predicate name="someconsume">  
+      <parameters> int x0 int consumeState </parameters>  
+      <expression>  
+        <functional> eq(x0, consumeState) </functional>  
+      </expression>  
+    </predicate>  
+</predicates>   
+
+<relations nbRelations="1">  
+   <relation name="applies" arity="2" nbTuples="3" semantics="soft" defaultCost="infinity">  
+      0: -1 -1 | 1 -1 | -1 1 
+   </relation>  
+</relations> 
+
+<constraints nbConstraints="4">  
+   <constraint name="applies_correctly" arity="2" scope="Storage-SERTAN_aad:i#Cart-SERTAN_2cc Storage-SERTAN_aad:o#Cart-SERTAN_2cc" reference="applies" />  
+   <constraint name="Storage-SERTAN_aad:i#Cart-SERTAN_2cc_same" arity="2" scope="Storage-SERTAN_aad:i#Cart-SERTAN_2cc Cart-SERTAN_2cc:o#Storage-SERTAN_aad" reference="equalto" > 
+      <parameters> Storage-SERTAN_aad:i#Cart-SERTAN_2cc Cart-SERTAN_2cc:o#Storage-SERTAN_aad </parameters>
+   </constraint>
+   <constraint name="Storage-SERTAN_aad:o#Cart-SERTAN_2cc_same" arity="2" scope="Storage-SERTAN_aad:o#Cart-SERTAN_2cc Cart-SERTAN_2cc:i#Storage-SERTAN_aad" reference="equalto" > 
+      <parameters> Storage-SERTAN_aad:o#Cart-SERTAN_2cc Cart-SERTAN_2cc:i#Storage-SERTAN_aad </parameters>
+   </constraint>
+   <constraint name="request_consume" arity="1" scope="Storage-SERTAN_aad:i#Cart-SERTAN_2cc" reference="someconsume" >  
+      <parameters> Storage-SERTAN_aad:i#Cart-SERTAN_2cc 1 </parameters>  
+   </constraint>  
+</constraints>  
+
+</instance>

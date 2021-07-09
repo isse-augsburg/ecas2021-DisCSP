@@ -1,0 +1,9 @@
+<experiment>  
+	<configuration>  
+		 <resultFile fileName = "res2.log"/>  
+		 <agentDescription agentName = "algorithms/dpop/DPOPagentJaCoP.xml"/>  
+	</configuration>  
+	<problemList nbProblem = "1">  
+		  <file fileName = "./_problem_Robot200@SERTAN_2e6.xcsp"/>  
+	</problemList>  
+</experiment>

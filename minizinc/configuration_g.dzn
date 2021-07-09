@@ -1,0 +1,11 @@
+nCaps = 10;
+task = [9,8,10];
+noAgents = 6;
+capabilities = [{9,10},{5,3,1,4,8,7,6,2},{},{9,10},{},{5,3,1,4,8,7,6,2}];
+isConnected = [|
+false,false,true,false,true,false |
+false,false,true,false,true,false |
+true,true,false,true,false,true |
+false,false,true,false,true,false |
+true,true,false,true,false,true |
+false,false,true,false,true,false |];

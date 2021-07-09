@@ -1,0 +1,45 @@
+<instance>
+<presentation name="Robot200@SERTAN_6f0" maximize="false" format="XCSP 2.1_FRODO" maxConstraintArity="2" />
+
+<agents self="Robot200-SERTAN_6f0">
+    <agent name="Robot200-SERTAN_6f0" />
+    <agent name="Cart-SERTAN_dcc" />
+</agents>
+
+<domains nbDomains="1">
+    <domain name="state" nbValues="3">-1..1</domain>
+</domains>
+
+<variables>
+    <variable name="Robot200-SERTAN_6f0:i#Cart-SERTAN_dcc" domain="state" agent="Robot200-SERTAN_6f0" />
+    <variable name="Cart-SERTAN_dcc:o#Robot200-SERTAN_6f0" domain="state" agent="Cart-SERTAN_dcc" />
+    <variable name="Robot200-SERTAN_6f0:o#Cart-SERTAN_dcc" domain="state" agent="Robot200-SERTAN_6f0" />
+    <variable name="Cart-SERTAN_dcc:i#Robot200-SERTAN_6f0" domain="state" agent="Cart-SERTAN_dcc" />
+</variables>
+
+<predicates nbPredicates="1">  
+    <predicate name="equalto">  
+      <parameters> int X1 int X2 </parameters>  
+      <expression>  
+        <functional> eq(X1, X2) </functional>  
+      </expression>  
+    </predicate>  
+</predicates>   
+
+<relations nbRelations="1">  
+   <relation name="applies" arity="2" nbTuples="1" semantics="soft" defaultCost="infinity">  
+      0: -1 -1
+   </relation>  
+</relations> 
+
+<constraints nbConstraints="3">  
+   <constraint name="applies_correctly" arity="2" scope="Robot200-SERTAN_6f0:i#Cart-SERTAN_dcc Robot200-SERTAN_6f0:o#Cart-SERTAN_dcc" reference="applies" />  
+   <constraint name="Robot200-SERTAN_6f0:i#Cart-SERTAN_dcc_same" arity="2" scope="Robot200-SERTAN_6f0:i#Cart-SERTAN_dcc Cart-SERTAN_dcc:o#Robot200-SERTAN_6f0" reference="equalto" > 
+      <parameters> Robot200-SERTAN_6f0:i#Cart-SERTAN_dcc Cart-SERTAN_dcc:o#Robot200-SERTAN_6f0 </parameters>
+   </constraint>
+   <constraint name="Robot200-SERTAN_6f0:o#Cart-SERTAN_dcc_same" arity="2" scope="Robot200-SERTAN_6f0:o#Cart-SERTAN_dcc Cart-SERTAN_dcc:i#Robot200-SERTAN_6f0" reference="equalto" > 
+      <parameters> Robot200-SERTAN_6f0:o#Cart-SERTAN_dcc Cart-SERTAN_dcc:i#Robot200-SERTAN_6f0 </parameters>
+   </constraint>
+</constraints>  
+
+</instance>

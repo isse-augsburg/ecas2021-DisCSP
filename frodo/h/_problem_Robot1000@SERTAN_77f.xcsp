@@ -1,0 +1,56 @@
+<instance>
+<presentation name="Robot1000@SERTAN_77f" maximize="false" format="XCSP 2.1_FRODO" maxConstraintArity="4" />
+
+<agents self="Robot1000-SERTAN_77f">
+    <agent name="Cart-SERTAN_7a3" />
+    <agent name="Cart-SERTAN_7fe" />
+    <agent name="Robot1000-SERTAN_77f" />
+</agents>
+
+<domains nbDomains="1">
+    <domain name="state" nbValues="4">-1..2</domain>
+</domains>
+
+<variables>
+    <variable name="Robot1000-SERTAN_77f:i#Cart-SERTAN_7a3" domain="state" agent="Robot1000-SERTAN_77f" />
+    <variable name="Cart-SERTAN_7a3:o#Robot1000-SERTAN_77f" domain="state" agent="Cart-SERTAN_7a3" />
+    <variable name="Robot1000-SERTAN_77f:i#Cart-SERTAN_7fe" domain="state" agent="Robot1000-SERTAN_77f" />
+    <variable name="Cart-SERTAN_7fe:o#Robot1000-SERTAN_77f" domain="state" agent="Cart-SERTAN_7fe" />
+    <variable name="Robot1000-SERTAN_77f:o#Cart-SERTAN_7a3" domain="state" agent="Robot1000-SERTAN_77f" />
+    <variable name="Cart-SERTAN_7a3:i#Robot1000-SERTAN_77f" domain="state" agent="Cart-SERTAN_7a3" />
+    <variable name="Robot1000-SERTAN_77f:o#Cart-SERTAN_7fe" domain="state" agent="Robot1000-SERTAN_77f" />
+    <variable name="Cart-SERTAN_7fe:i#Robot1000-SERTAN_77f" domain="state" agent="Cart-SERTAN_7fe" />
+</variables>
+
+<predicates nbPredicates="1">  
+    <predicate name="equalto">  
+      <parameters> int X1 int X2 </parameters>  
+      <expression>  
+        <functional> eq(X1, X2) </functional>  
+      </expression>  
+    </predicate>  
+</predicates>   
+
+<relations nbRelations="1">  
+   <relation name="applies" arity="4" nbTuples="5" semantics="soft" defaultCost="infinity">  
+      0: -1 -1 -1 -1 | 1 -1 2 -1 | 1 -1 -1 2 | -1 1 2 -1 | -1 1 -1 2 
+   </relation>  
+</relations> 
+
+<constraints nbConstraints="5">  
+   <constraint name="applies_correctly" arity="4" scope="Robot1000-SERTAN_77f:i#Cart-SERTAN_7a3 Robot1000-SERTAN_77f:i#Cart-SERTAN_7fe Robot1000-SERTAN_77f:o#Cart-SERTAN_7a3 Robot1000-SERTAN_77f:o#Cart-SERTAN_7fe" reference="applies" />  
+   <constraint name="Robot1000-SERTAN_77f:i#Cart-SERTAN_7a3_same" arity="2" scope="Robot1000-SERTAN_77f:i#Cart-SERTAN_7a3 Cart-SERTAN_7a3:o#Robot1000-SERTAN_77f" reference="equalto" > 
+      <parameters> Robot1000-SERTAN_77f:i#Cart-SERTAN_7a3 Cart-SERTAN_7a3:o#Robot1000-SERTAN_77f </parameters>
+   </constraint>
+   <constraint name="Robot1000-SERTAN_77f:i#Cart-SERTAN_7fe_same" arity="2" scope="Robot1000-SERTAN_77f:i#Cart-SERTAN_7fe Cart-SERTAN_7fe:o#Robot1000-SERTAN_77f" reference="equalto" > 
+      <parameters> Robot1000-SERTAN_77f:i#Cart-SERTAN_7fe Cart-SERTAN_7fe:o#Robot1000-SERTAN_77f </parameters>
+   </constraint>
+   <constraint name="Robot1000-SERTAN_77f:o#Cart-SERTAN_7a3_same" arity="2" scope="Robot1000-SERTAN_77f:o#Cart-SERTAN_7a3 Cart-SERTAN_7a3:i#Robot1000-SERTAN_77f" reference="equalto" > 
+      <parameters> Robot1000-SERTAN_77f:o#Cart-SERTAN_7a3 Cart-SERTAN_7a3:i#Robot1000-SERTAN_77f </parameters>
+   </constraint>
+   <constraint name="Robot1000-SERTAN_77f:o#Cart-SERTAN_7fe_same" arity="2" scope="Robot1000-SERTAN_77f:o#Cart-SERTAN_7fe Cart-SERTAN_7fe:i#Robot1000-SERTAN_77f" reference="equalto" > 
+      <parameters> Robot1000-SERTAN_77f:o#Cart-SERTAN_7fe Cart-SERTAN_7fe:i#Robot1000-SERTAN_77f </parameters>
+   </constraint>
+</constraints>  
+
+</instance>

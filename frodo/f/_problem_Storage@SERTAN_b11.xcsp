@@ -1,0 +1,65 @@
+<instance>
+<presentation name="Storage@SERTAN_b11" maximize="false" format="XCSP 2.1_FRODO" maxConstraintArity="4" />
+
+<agents self="Storage-SERTAN_b11">
+    <agent name="Cart-SERTAN_835" />
+    <agent name="Storage-SERTAN_b11" />
+    <agent name="Cart-SERTAN_8a5" />
+</agents>
+
+<domains nbDomains="1">
+    <domain name="state" nbValues="4">-1..2</domain>
+</domains>
+
+<variables>
+    <variable name="Storage-SERTAN_b11:i#Cart-SERTAN_835" domain="state" agent="Storage-SERTAN_b11" />
+    <variable name="Cart-SERTAN_835:o#Storage-SERTAN_b11" domain="state" agent="Cart-SERTAN_835" />
+    <variable name="Storage-SERTAN_b11:i#Cart-SERTAN_8a5" domain="state" agent="Storage-SERTAN_b11" />
+    <variable name="Cart-SERTAN_8a5:o#Storage-SERTAN_b11" domain="state" agent="Cart-SERTAN_8a5" />
+    <variable name="Storage-SERTAN_b11:o#Cart-SERTAN_835" domain="state" agent="Storage-SERTAN_b11" />
+    <variable name="Cart-SERTAN_835:i#Storage-SERTAN_b11" domain="state" agent="Cart-SERTAN_835" />
+    <variable name="Storage-SERTAN_b11:o#Cart-SERTAN_8a5" domain="state" agent="Storage-SERTAN_b11" />
+    <variable name="Cart-SERTAN_8a5:i#Storage-SERTAN_b11" domain="state" agent="Cart-SERTAN_8a5" />
+</variables>
+
+<predicates nbPredicates="2">  
+    <predicate name="equalto">  
+      <parameters> int X1 int X2 </parameters>  
+      <expression>  
+        <functional> eq(X1, X2) </functional>  
+      </expression>  
+    </predicate>  
+    <predicate name="someconsume">  
+      <parameters> int x0 int x1 int consumeState </parameters>  
+      <expression>  
+        <functional> xor( eq(x0, consumeState), eq(x1, consumeState)) </functional>  
+      </expression>  
+    </predicate>  
+</predicates>   
+
+<relations nbRelations="1">  
+   <relation name="applies" arity="4" nbTuples="5" semantics="soft" defaultCost="infinity">  
+      0: -1 -1 -1 -1 | 2 -1 -1 -1 | -1 2 -1 -1 | -1 -1 1 -1 | -1 -1 -1 1 
+   </relation>  
+</relations> 
+
+<constraints nbConstraints="6">  
+   <constraint name="applies_correctly" arity="4" scope="Storage-SERTAN_b11:i#Cart-SERTAN_835 Storage-SERTAN_b11:i#Cart-SERTAN_8a5 Storage-SERTAN_b11:o#Cart-SERTAN_835 Storage-SERTAN_b11:o#Cart-SERTAN_8a5" reference="applies" />  
+   <constraint name="Storage-SERTAN_b11:i#Cart-SERTAN_835_same" arity="2" scope="Storage-SERTAN_b11:i#Cart-SERTAN_835 Cart-SERTAN_835:o#Storage-SERTAN_b11" reference="equalto" > 
+      <parameters> Storage-SERTAN_b11:i#Cart-SERTAN_835 Cart-SERTAN_835:o#Storage-SERTAN_b11 </parameters>
+   </constraint>
+   <constraint name="Storage-SERTAN_b11:i#Cart-SERTAN_8a5_same" arity="2" scope="Storage-SERTAN_b11:i#Cart-SERTAN_8a5 Cart-SERTAN_8a5:o#Storage-SERTAN_b11" reference="equalto" > 
+      <parameters> Storage-SERTAN_b11:i#Cart-SERTAN_8a5 Cart-SERTAN_8a5:o#Storage-SERTAN_b11 </parameters>
+   </constraint>
+   <constraint name="Storage-SERTAN_b11:o#Cart-SERTAN_835_same" arity="2" scope="Storage-SERTAN_b11:o#Cart-SERTAN_835 Cart-SERTAN_835:i#Storage-SERTAN_b11" reference="equalto" > 
+      <parameters> Storage-SERTAN_b11:o#Cart-SERTAN_835 Cart-SERTAN_835:i#Storage-SERTAN_b11 </parameters>
+   </constraint>
+   <constraint name="Storage-SERTAN_b11:o#Cart-SERTAN_8a5_same" arity="2" scope="Storage-SERTAN_b11:o#Cart-SERTAN_8a5 Cart-SERTAN_8a5:i#Storage-SERTAN_b11" reference="equalto" > 
+      <parameters> Storage-SERTAN_b11:o#Cart-SERTAN_8a5 Cart-SERTAN_8a5:i#Storage-SERTAN_b11 </parameters>
+   </constraint>
+   <constraint name="request_consume" arity="2" scope="Storage-SERTAN_b11:i#Cart-SERTAN_835 Storage-SERTAN_b11:i#Cart-SERTAN_8a5" reference="someconsume" >  
+      <parameters> Storage-SERTAN_b11:i#Cart-SERTAN_835 Storage-SERTAN_b11:i#Cart-SERTAN_8a5 2 </parameters>  
+   </constraint>  
+</constraints>  
+
+</instance>

@@ -1,0 +1,67 @@
+<instance>
+<presentation name="Cart@SERTAN_1d5" maximize="false" format="XCSP 2.1_FRODO" maxConstraintArity="6" />
+
+<agents self="Cart-SERTAN_1d5">
+    <agent name="Storage-SERTAN_178" />
+    <agent name="Storage-SERTAN_3e5" />
+    <agent name="Robot200-SERTAN_68f" />
+    <agent name="Cart-SERTAN_1d5" />
+</agents>
+
+<domains nbDomains="1">
+    <domain name="state" nbValues="3">-1..1</domain>
+</domains>
+
+<variables>
+    <variable name="Cart-SERTAN_1d5:i#Storage-SERTAN_178" domain="state" agent="Cart-SERTAN_1d5" />
+    <variable name="Storage-SERTAN_178:o#Cart-SERTAN_1d5" domain="state" agent="Storage-SERTAN_178" />
+    <variable name="Cart-SERTAN_1d5:i#Storage-SERTAN_3e5" domain="state" agent="Cart-SERTAN_1d5" />
+    <variable name="Storage-SERTAN_3e5:o#Cart-SERTAN_1d5" domain="state" agent="Storage-SERTAN_3e5" />
+    <variable name="Cart-SERTAN_1d5:i#Robot200-SERTAN_68f" domain="state" agent="Cart-SERTAN_1d5" />
+    <variable name="Robot200-SERTAN_68f:o#Cart-SERTAN_1d5" domain="state" agent="Robot200-SERTAN_68f" />
+    <variable name="Cart-SERTAN_1d5:o#Storage-SERTAN_178" domain="state" agent="Cart-SERTAN_1d5" />
+    <variable name="Storage-SERTAN_178:i#Cart-SERTAN_1d5" domain="state" agent="Storage-SERTAN_178" />
+    <variable name="Cart-SERTAN_1d5:o#Storage-SERTAN_3e5" domain="state" agent="Cart-SERTAN_1d5" />
+    <variable name="Storage-SERTAN_3e5:i#Cart-SERTAN_1d5" domain="state" agent="Storage-SERTAN_3e5" />
+    <variable name="Cart-SERTAN_1d5:o#Robot200-SERTAN_68f" domain="state" agent="Cart-SERTAN_1d5" />
+    <variable name="Robot200-SERTAN_68f:i#Cart-SERTAN_1d5" domain="state" agent="Robot200-SERTAN_68f" />
+</variables>
+
+<predicates nbPredicates="1">  
+    <predicate name="equalto">  
+      <parameters> int X1 int X2 </parameters>  
+      <expression>  
+        <functional> eq(X1, X2) </functional>  
+      </expression>  
+    </predicate>  
+</predicates>   
+
+<relations nbRelations="1">  
+   <relation name="applies" arity="6" nbTuples="10" semantics="soft" defaultCost="infinity">  
+      0: -1 -1 -1 -1 -1 -1 | 1 -1 -1 1 -1 -1 | 1 -1 -1 -1 1 -1 | 1 -1 -1 -1 -1 1 | -1 1 -1 1 -1 -1 | -1 1 -1 -1 1 -1 | -1 1 -1 -1 -1 1 | -1 -1 1 1 -1 -1 | -1 -1 1 -1 1 -1 | -1 -1 1 -1 -1 1 
+   </relation>  
+</relations> 
+
+<constraints nbConstraints="7">  
+   <constraint name="applies_correctly" arity="6" scope="Cart-SERTAN_1d5:i#Storage-SERTAN_178 Cart-SERTAN_1d5:i#Storage-SERTAN_3e5 Cart-SERTAN_1d5:i#Robot200-SERTAN_68f Cart-SERTAN_1d5:o#Storage-SERTAN_178 Cart-SERTAN_1d5:o#Storage-SERTAN_3e5 Cart-SERTAN_1d5:o#Robot200-SERTAN_68f" reference="applies" />  
+   <constraint name="Cart-SERTAN_1d5:i#Storage-SERTAN_178_same" arity="2" scope="Cart-SERTAN_1d5:i#Storage-SERTAN_178 Storage-SERTAN_178:o#Cart-SERTAN_1d5" reference="equalto" > 
+      <parameters> Cart-SERTAN_1d5:i#Storage-SERTAN_178 Storage-SERTAN_178:o#Cart-SERTAN_1d5 </parameters>
+   </constraint>
+   <constraint name="Cart-SERTAN_1d5:i#Storage-SERTAN_3e5_same" arity="2" scope="Cart-SERTAN_1d5:i#Storage-SERTAN_3e5 Storage-SERTAN_3e5:o#Cart-SERTAN_1d5" reference="equalto" > 
+      <parameters> Cart-SERTAN_1d5:i#Storage-SERTAN_3e5 Storage-SERTAN_3e5:o#Cart-SERTAN_1d5 </parameters>
+   </constraint>
+   <constraint name="Cart-SERTAN_1d5:i#Robot200-SERTAN_68f_same" arity="2" scope="Cart-SERTAN_1d5:i#Robot200-SERTAN_68f Robot200-SERTAN_68f:o#Cart-SERTAN_1d5" reference="equalto" > 
+      <parameters> Cart-SERTAN_1d5:i#Robot200-SERTAN_68f Robot200-SERTAN_68f:o#Cart-SERTAN_1d5 </parameters>
+   </constraint>
+   <constraint name="Cart-SERTAN_1d5:o#Storage-SERTAN_178_same" arity="2" scope="Cart-SERTAN_1d5:o#Storage-SERTAN_178 Storage-SERTAN_178:i#Cart-SERTAN_1d5" reference="equalto" > 
+      <parameters> Cart-SERTAN_1d5:o#Storage-SERTAN_178 Storage-SERTAN_178:i#Cart-SERTAN_1d5 </parameters>
+   </constraint>
+   <constraint name="Cart-SERTAN_1d5:o#Storage-SERTAN_3e5_same" arity="2" scope="Cart-SERTAN_1d5:o#Storage-SERTAN_3e5 Storage-SERTAN_3e5:i#Cart-SERTAN_1d5" reference="equalto" > 
+      <parameters> Cart-SERTAN_1d5:o#Storage-SERTAN_3e5 Storage-SERTAN_3e5:i#Cart-SERTAN_1d5 </parameters>
+   </constraint>
+   <constraint name="Cart-SERTAN_1d5:o#Robot200-SERTAN_68f_same" arity="2" scope="Cart-SERTAN_1d5:o#Robot200-SERTAN_68f Robot200-SERTAN_68f:i#Cart-SERTAN_1d5" reference="equalto" > 
+      <parameters> Cart-SERTAN_1d5:o#Robot200-SERTAN_68f Robot200-SERTAN_68f:i#Cart-SERTAN_1d5 </parameters>
+   </constraint>
+</constraints>  
+
+</instance>

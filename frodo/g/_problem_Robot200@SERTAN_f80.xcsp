@@ -1,0 +1,56 @@
+<instance>
+<presentation name="Robot200@SERTAN_f80" maximize="false" format="XCSP 2.1_FRODO" maxConstraintArity="4" />
+
+<agents self="Robot200-SERTAN_f80">
+    <agent name="Robot200-SERTAN_f80" />
+    <agent name="Cart-SERTAN_ca4" />
+    <agent name="Cart-SERTAN_db2" />
+</agents>
+
+<domains nbDomains="1">
+    <domain name="state" nbValues="4">-1..2</domain>
+</domains>
+
+<variables>
+    <variable name="Robot200-SERTAN_f80:i#Cart-SERTAN_ca4" domain="state" agent="Robot200-SERTAN_f80" />
+    <variable name="Cart-SERTAN_ca4:o#Robot200-SERTAN_f80" domain="state" agent="Cart-SERTAN_ca4" />
+    <variable name="Robot200-SERTAN_f80:i#Cart-SERTAN_db2" domain="state" agent="Robot200-SERTAN_f80" />
+    <variable name="Cart-SERTAN_db2:o#Robot200-SERTAN_f80" domain="state" agent="Cart-SERTAN_db2" />
+    <variable name="Robot200-SERTAN_f80:o#Cart-SERTAN_ca4" domain="state" agent="Robot200-SERTAN_f80" />
+    <variable name="Cart-SERTAN_ca4:i#Robot200-SERTAN_f80" domain="state" agent="Cart-SERTAN_ca4" />
+    <variable name="Robot200-SERTAN_f80:o#Cart-SERTAN_db2" domain="state" agent="Robot200-SERTAN_f80" />
+    <variable name="Cart-SERTAN_db2:i#Robot200-SERTAN_f80" domain="state" agent="Cart-SERTAN_db2" />
+</variables>
+
+<predicates nbPredicates="1">  
+    <predicate name="equalto">  
+      <parameters> int X1 int X2 </parameters>  
+      <expression>  
+        <functional> eq(X1, X2) </functional>  
+      </expression>  
+    </predicate>  
+</predicates>   
+
+<relations nbRelations="1">  
+   <relation name="applies" arity="4" nbTuples="5" semantics="soft" defaultCost="infinity">  
+      0: -1 -1 -1 -1 | 1 -1 2 -1 | 1 -1 -1 2 | -1 1 2 -1 | -1 1 -1 2 
+   </relation>  
+</relations> 
+
+<constraints nbConstraints="5">  
+   <constraint name="applies_correctly" arity="4" scope="Robot200-SERTAN_f80:i#Cart-SERTAN_ca4 Robot200-SERTAN_f80:i#Cart-SERTAN_db2 Robot200-SERTAN_f80:o#Cart-SERTAN_ca4 Robot200-SERTAN_f80:o#Cart-SERTAN_db2" reference="applies" />  
+   <constraint name="Robot200-SERTAN_f80:i#Cart-SERTAN_ca4_same" arity="2" scope="Robot200-SERTAN_f80:i#Cart-SERTAN_ca4 Cart-SERTAN_ca4:o#Robot200-SERTAN_f80" reference="equalto" > 
+      <parameters> Robot200-SERTAN_f80:i#Cart-SERTAN_ca4 Cart-SERTAN_ca4:o#Robot200-SERTAN_f80 </parameters>
+   </constraint>
+   <constraint name="Robot200-SERTAN_f80:i#Cart-SERTAN_db2_same" arity="2" scope="Robot200-SERTAN_f80:i#Cart-SERTAN_db2 Cart-SERTAN_db2:o#Robot200-SERTAN_f80" reference="equalto" > 
+      <parameters> Robot200-SERTAN_f80:i#Cart-SERTAN_db2 Cart-SERTAN_db2:o#Robot200-SERTAN_f80 </parameters>
+   </constraint>
+   <constraint name="Robot200-SERTAN_f80:o#Cart-SERTAN_ca4_same" arity="2" scope="Robot200-SERTAN_f80:o#Cart-SERTAN_ca4 Cart-SERTAN_ca4:i#Robot200-SERTAN_f80" reference="equalto" > 
+      <parameters> Robot200-SERTAN_f80:o#Cart-SERTAN_ca4 Cart-SERTAN_ca4:i#Robot200-SERTAN_f80 </parameters>
+   </constraint>
+   <constraint name="Robot200-SERTAN_f80:o#Cart-SERTAN_db2_same" arity="2" scope="Robot200-SERTAN_f80:o#Cart-SERTAN_db2 Cart-SERTAN_db2:i#Robot200-SERTAN_f80" reference="equalto" > 
+      <parameters> Robot200-SERTAN_f80:o#Cart-SERTAN_db2 Cart-SERTAN_db2:i#Robot200-SERTAN_f80 </parameters>
+   </constraint>
+</constraints>  
+
+</instance>

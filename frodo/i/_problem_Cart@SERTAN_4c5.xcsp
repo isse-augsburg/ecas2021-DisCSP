@@ -1,0 +1,89 @@
+<instance>
+<presentation name="Cart@SERTAN_4c5" maximize="false" format="XCSP 2.1_FRODO" maxConstraintArity="10" />
+
+<agents self="Cart-SERTAN_4c5">
+    <agent name="Storage-SERTAN_5ad" />
+    <agent name="Robot200-SERTAN_f91" />
+    <agent name="Robot1000-SERTAN_c93" />
+    <agent name="Robot200-SERTAN_2e6" />
+    <agent name="Storage-SERTAN_17a" />
+    <agent name="Cart-SERTAN_4c5" />
+</agents>
+
+<domains nbDomains="1">
+    <domain name="state" nbValues="4">-1..2</domain>
+</domains>
+
+<variables>
+    <variable name="Cart-SERTAN_4c5:i#Storage-SERTAN_5ad" domain="state" agent="Cart-SERTAN_4c5" />
+    <variable name="Storage-SERTAN_5ad:o#Cart-SERTAN_4c5" domain="state" agent="Storage-SERTAN_5ad" />
+    <variable name="Cart-SERTAN_4c5:i#Robot200-SERTAN_f91" domain="state" agent="Cart-SERTAN_4c5" />
+    <variable name="Robot200-SERTAN_f91:o#Cart-SERTAN_4c5" domain="state" agent="Robot200-SERTAN_f91" />
+    <variable name="Cart-SERTAN_4c5:i#Robot1000-SERTAN_c93" domain="state" agent="Cart-SERTAN_4c5" />
+    <variable name="Robot1000-SERTAN_c93:o#Cart-SERTAN_4c5" domain="state" agent="Robot1000-SERTAN_c93" />
+    <variable name="Cart-SERTAN_4c5:i#Robot200-SERTAN_2e6" domain="state" agent="Cart-SERTAN_4c5" />
+    <variable name="Robot200-SERTAN_2e6:o#Cart-SERTAN_4c5" domain="state" agent="Robot200-SERTAN_2e6" />
+    <variable name="Cart-SERTAN_4c5:i#Storage-SERTAN_17a" domain="state" agent="Cart-SERTAN_4c5" />
+    <variable name="Storage-SERTAN_17a:o#Cart-SERTAN_4c5" domain="state" agent="Storage-SERTAN_17a" />
+    <variable name="Cart-SERTAN_4c5:o#Storage-SERTAN_5ad" domain="state" agent="Cart-SERTAN_4c5" />
+    <variable name="Storage-SERTAN_5ad:i#Cart-SERTAN_4c5" domain="state" agent="Storage-SERTAN_5ad" />
+    <variable name="Cart-SERTAN_4c5:o#Storage-SERTAN_17a" domain="state" agent="Cart-SERTAN_4c5" />
+    <variable name="Storage-SERTAN_17a:i#Cart-SERTAN_4c5" domain="state" agent="Storage-SERTAN_17a" />
+    <variable name="Cart-SERTAN_4c5:o#Robot1000-SERTAN_c93" domain="state" agent="Cart-SERTAN_4c5" />
+    <variable name="Robot1000-SERTAN_c93:i#Cart-SERTAN_4c5" domain="state" agent="Robot1000-SERTAN_c93" />
+    <variable name="Cart-SERTAN_4c5:o#Robot200-SERTAN_f91" domain="state" agent="Cart-SERTAN_4c5" />
+    <variable name="Robot200-SERTAN_f91:i#Cart-SERTAN_4c5" domain="state" agent="Robot200-SERTAN_f91" />
+    <variable name="Cart-SERTAN_4c5:o#Robot200-SERTAN_2e6" domain="state" agent="Cart-SERTAN_4c5" />
+    <variable name="Robot200-SERTAN_2e6:i#Cart-SERTAN_4c5" domain="state" agent="Robot200-SERTAN_2e6" />
+</variables>
+
+<predicates nbPredicates="1">  
+    <predicate name="equalto">  
+      <parameters> int X1 int X2 </parameters>  
+      <expression>  
+        <functional> eq(X1, X2) </functional>  
+      </expression>  
+    </predicate>  
+</predicates>   
+
+<relations nbRelations="1">  
+   <relation name="applies" arity="10" nbTuples="51" semantics="soft" defaultCost="infinity">  
+      0: -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 | 1 -1 -1 -1 -1 1 -1 -1 -1 -1 | 1 -1 -1 -1 -1 -1 1 -1 -1 -1 | 1 -1 -1 -1 -1 -1 -1 1 -1 -1 | 1 -1 -1 -1 -1 -1 -1 -1 1 -1 | 1 -1 -1 -1 -1 -1 -1 -1 -1 1 | -1 1 -1 -1 -1 1 -1 -1 -1 -1 | -1 1 -1 -1 -1 -1 1 -1 -1 -1 | -1 1 -1 -1 -1 -1 -1 1 -1 -1 | -1 1 -1 -1 -1 -1 -1 -1 1 -1 | -1 1 -1 -1 -1 -1 -1 -1 -1 1 | -1 -1 1 -1 -1 1 -1 -1 -1 -1 | -1 -1 1 -1 -1 -1 1 -1 -1 -1 | -1 -1 1 -1 -1 -1 -1 1 -1 -1 | -1 -1 1 -1 -1 -1 -1 -1 1 -1 | -1 -1 1 -1 -1 -1 -1 -1 -1 1 | -1 -1 -1 1 -1 1 -1 -1 -1 -1 | -1 -1 -1 1 -1 -1 1 -1 -1 -1 | -1 -1 -1 1 -1 -1 -1 1 -1 -1 | -1 -1 -1 1 -1 -1 -1 -1 1 -1 | -1 -1 -1 1 -1 -1 -1 -1 -1 1 | -1 -1 -1 -1 1 1 -1 -1 -1 -1 | -1 -1 -1 -1 1 -1 1 -1 -1 -1 | -1 -1 -1 -1 1 -1 -1 1 -1 -1 | -1 -1 -1 -1 1 -1 -1 -1 1 -1 | -1 -1 -1 -1 1 -1 -1 -1 -1 1 | 2 -1 -1 -1 -1 2 -1 -1 -1 -1 | 2 -1 -1 -1 -1 -1 2 -1 -1 -1 | 2 -1 -1 -1 -1 -1 -1 2 -1 -1 | 2 -1 -1 -1 -1 -1 -1 -1 2 -1 | 2 -1 -1 -1 -1 -1 -1 -1 -1 2 | -1 2 -1 -1 -1 2 -1 -1 -1 -1 | -1 2 -1 -1 -1 -1 2 -1 -1 -1 | -1 2 -1 -1 -1 -1 -1 2 -1 -1 | -1 2 -1 -1 -1 -1 -1 -1 2 -1 | -1 2 -1 -1 -1 -1 -1 -1 -1 2 | -1 -1 2 -1 -1 2 -1 -1 -1 -1 | -1 -1 2 -1 -1 -1 2 -1 -1 -1 | -1 -1 2 -1 -1 -1 -1 2 -1 -1 | -1 -1 2 -1 -1 -1 -1 -1 2 -1 | -1 -1 2 -1 -1 -1 -1 -1 -1 2 | -1 -1 -1 2 -1 2 -1 -1 -1 -1 | -1 -1 -1 2 -1 -1 2 -1 -1 -1 | -1 -1 -1 2 -1 -1 -1 2 -1 -1 | -1 -1 -1 2 -1 -1 -1 -1 2 -1 | -1 -1 -1 2 -1 -1 -1 -1 -1 2 | -1 -1 -1 -1 2 2 -1 -1 -1 -1 | -1 -1 -1 -1 2 -1 2 -1 -1 -1 | -1 -1 -1 -1 2 -1 -1 2 -1 -1 | -1 -1 -1 -1 2 -1 -1 -1 2 -1 | -1 -1 -1 -1 2 -1 -1 -1 -1 2 
+   </relation>  
+</relations> 
+
+<constraints nbConstraints="11">  
+   <constraint name="applies_correctly" arity="10" scope="Cart-SERTAN_4c5:i#Storage-SERTAN_5ad Cart-SERTAN_4c5:i#Robot200-SERTAN_f91 Cart-SERTAN_4c5:i#Robot1000-SERTAN_c93 Cart-SERTAN_4c5:i#Robot200-SERTAN_2e6 Cart-SERTAN_4c5:i#Storage-SERTAN_17a Cart-SERTAN_4c5:o#Storage-SERTAN_5ad Cart-SERTAN_4c5:o#Storage-SERTAN_17a Cart-SERTAN_4c5:o#Robot1000-SERTAN_c93 Cart-SERTAN_4c5:o#Robot200-SERTAN_f91 Cart-SERTAN_4c5:o#Robot200-SERTAN_2e6" reference="applies" />  
+   <constraint name="Cart-SERTAN_4c5:i#Storage-SERTAN_5ad_same" arity="2" scope="Cart-SERTAN_4c5:i#Storage-SERTAN_5ad Storage-SERTAN_5ad:o#Cart-SERTAN_4c5" reference="equalto" > 
+      <parameters> Cart-SERTAN_4c5:i#Storage-SERTAN_5ad Storage-SERTAN_5ad:o#Cart-SERTAN_4c5 </parameters>
+   </constraint>
+   <constraint name="Cart-SERTAN_4c5:i#Robot200-SERTAN_f91_same" arity="2" scope="Cart-SERTAN_4c5:i#Robot200-SERTAN_f91 Robot200-SERTAN_f91:o#Cart-SERTAN_4c5" reference="equalto" > 
+      <parameters> Cart-SERTAN_4c5:i#Robot200-SERTAN_f91 Robot200-SERTAN_f91:o#Cart-SERTAN_4c5 </parameters>
+   </constraint>
+   <constraint name="Cart-SERTAN_4c5:i#Robot1000-SERTAN_c93_same" arity="2" scope="Cart-SERTAN_4c5:i#Robot1000-SERTAN_c93 Robot1000-SERTAN_c93:o#Cart-SERTAN_4c5" reference="equalto" > 
+      <parameters> Cart-SERTAN_4c5:i#Robot1000-SERTAN_c93 Robot1000-SERTAN_c93:o#Cart-SERTAN_4c5 </parameters>
+   </constraint>
+   <constraint name="Cart-SERTAN_4c5:i#Robot200-SERTAN_2e6_same" arity="2" scope="Cart-SERTAN_4c5:i#Robot200-SERTAN_2e6 Robot200-SERTAN_2e6:o#Cart-SERTAN_4c5" reference="equalto" > 
+      <parameters> Cart-SERTAN_4c5:i#Robot200-SERTAN_2e6 Robot200-SERTAN_2e6:o#Cart-SERTAN_4c5 </parameters>
+   </constraint>
+   <constraint name="Cart-SERTAN_4c5:i#Storage-SERTAN_17a_same" arity="2" scope="Cart-SERTAN_4c5:i#Storage-SERTAN_17a Storage-SERTAN_17a:o#Cart-SERTAN_4c5" reference="equalto" > 
+      <parameters> Cart-SERTAN_4c5:i#Storage-SERTAN_17a Storage-SERTAN_17a:o#Cart-SERTAN_4c5 </parameters>
+   </constraint>
+   <constraint name="Cart-SERTAN_4c5:o#Storage-SERTAN_5ad_same" arity="2" scope="Cart-SERTAN_4c5:o#Storage-SERTAN_5ad Storage-SERTAN_5ad:i#Cart-SERTAN_4c5" reference="equalto" > 
+      <parameters> Cart-SERTAN_4c5:o#Storage-SERTAN_5ad Storage-SERTAN_5ad:i#Cart-SERTAN_4c5 </parameters>
+   </constraint>
+   <constraint name="Cart-SERTAN_4c5:o#Storage-SERTAN_17a_same" arity="2" scope="Cart-SERTAN_4c5:o#Storage-SERTAN_17a Storage-SERTAN_17a:i#Cart-SERTAN_4c5" reference="equalto" > 
+      <parameters> Cart-SERTAN_4c5:o#Storage-SERTAN_17a Storage-SERTAN_17a:i#Cart-SERTAN_4c5 </parameters>
+   </constraint>
+   <constraint name="Cart-SERTAN_4c5:o#Robot1000-SERTAN_c93_same" arity="2" scope="Cart-SERTAN_4c5:o#Robot1000-SERTAN_c93 Robot1000-SERTAN_c93:i#Cart-SERTAN_4c5" reference="equalto" > 
+      <parameters> Cart-SERTAN_4c5:o#Robot1000-SERTAN_c93 Robot1000-SERTAN_c93:i#Cart-SERTAN_4c5 </parameters>
+   </constraint>
+   <constraint name="Cart-SERTAN_4c5:o#Robot200-SERTAN_f91_same" arity="2" scope="Cart-SERTAN_4c5:o#Robot200-SERTAN_f91 Robot200-SERTAN_f91:i#Cart-SERTAN_4c5" reference="equalto" > 
+      <parameters> Cart-SERTAN_4c5:o#Robot200-SERTAN_f91 Robot200-SERTAN_f91:i#Cart-SERTAN_4c5 </parameters>
+   </constraint>
+   <constraint name="Cart-SERTAN_4c5:o#Robot200-SERTAN_2e6_same" arity="2" scope="Cart-SERTAN_4c5:o#Robot200-SERTAN_2e6 Robot200-SERTAN_2e6:i#Cart-SERTAN_4c5" reference="equalto" > 
+      <parameters> Cart-SERTAN_4c5:o#Robot200-SERTAN_2e6 Robot200-SERTAN_2e6:i#Cart-SERTAN_4c5 </parameters>
+   </constraint>
+</constraints>  
+
+</instance>

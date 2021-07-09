@@ -1,0 +1,45 @@
+<instance>
+<presentation name="Storage@SERTAN_845" maximize="false" format="XCSP 2.1_FRODO" maxConstraintArity="2" />
+
+<agents self="Storage-SERTAN_845">
+    <agent name="Storage-SERTAN_845" />
+    <agent name="Cart-SERTAN_3bc" />
+</agents>
+
+<domains nbDomains="1">
+    <domain name="state" nbValues="3">-1..1</domain>
+</domains>
+
+<variables>
+    <variable name="Storage-SERTAN_845:i#Cart-SERTAN_3bc" domain="state" agent="Storage-SERTAN_845" />
+    <variable name="Cart-SERTAN_3bc:o#Storage-SERTAN_845" domain="state" agent="Cart-SERTAN_3bc" />
+    <variable name="Storage-SERTAN_845:o#Cart-SERTAN_3bc" domain="state" agent="Storage-SERTAN_845" />
+    <variable name="Cart-SERTAN_3bc:i#Storage-SERTAN_845" domain="state" agent="Cart-SERTAN_3bc" />
+</variables>
+
+<predicates nbPredicates="1">  
+    <predicate name="equalto">  
+      <parameters> int X1 int X2 </parameters>  
+      <expression>  
+        <functional> eq(X1, X2) </functional>  
+      </expression>  
+    </predicate>  
+</predicates>   
+
+<relations nbRelations="1">  
+   <relation name="applies" arity="2" nbTuples="3" semantics="soft" defaultCost="infinity">  
+      0: -1 -1 | 1 -1 | -1 1 
+   </relation>  
+</relations> 
+
+<constraints nbConstraints="3">  
+   <constraint name="applies_correctly" arity="2" scope="Storage-SERTAN_845:i#Cart-SERTAN_3bc Storage-SERTAN_845:o#Cart-SERTAN_3bc" reference="applies" />  
+   <constraint name="Storage-SERTAN_845:i#Cart-SERTAN_3bc_same" arity="2" scope="Storage-SERTAN_845:i#Cart-SERTAN_3bc Cart-SERTAN_3bc:o#Storage-SERTAN_845" reference="equalto" > 
+      <parameters> Storage-SERTAN_845:i#Cart-SERTAN_3bc Cart-SERTAN_3bc:o#Storage-SERTAN_845 </parameters>
+   </constraint>
+   <constraint name="Storage-SERTAN_845:o#Cart-SERTAN_3bc_same" arity="2" scope="Storage-SERTAN_845:o#Cart-SERTAN_3bc Cart-SERTAN_3bc:i#Storage-SERTAN_845" reference="equalto" > 
+      <parameters> Storage-SERTAN_845:o#Cart-SERTAN_3bc Cart-SERTAN_3bc:i#Storage-SERTAN_845 </parameters>
+   </constraint>
+</constraints>  
+
+</instance>
